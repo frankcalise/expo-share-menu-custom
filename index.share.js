@@ -1,19 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { AppRegistry, Text, View, Image, Button } from "react-native";
 import { ShareMenuReactView } from "react-native-share-menu";
-import SharedGroupPreferences from "react-native-shared-group-preferences";
-
-const APP_GROUP_ID = "group.com.frankcalise.exposharemenucustom";
-
-async function storeData(key, data) {
-  try {
-    console.log("storing data...");
-    await SharedGroupPreferences.setItem(key, data, APP_GROUP_ID);
-  } catch (errorCode) {
-    // errorCode 0 = There is no suite with that name
-    console.log(errorCode);
-  }
-}
+import { storeData } from "./utils";
 
 const Share = () => {
   const [sharedData, setSharedData] = useState("");

@@ -1,23 +1,37 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Text, View, Button } from "react-native";
-import SharedGroupPreferences from "react-native-shared-group-preferences";
-
-const APP_GROUP_ID = "group.com.frankcalise.exposharemenucustom";
-
-async function getData(key) {
-  try {
-    const loadedData = await SharedGroupPreferences.getItem(key, APP_GROUP_ID);
-    console.log("shared prefs data", loadedData);
-    return loadedData;
-  } catch (errorCode) {
-    // errorCode 0 = no group name exists. You probably need to setup your Xcode Project properly.
-    // errorCode 1 = there is no value for that key
-    console.log(errorCode);
-  }
-}
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { AppState, Text, View, Button } from "react-native";
+import { getData } from "./utils";
 
 const App = () => {
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener(
+      "change",
+      _handleAppStateChange
+    );
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  const _handleAppStateChange = (nextAppState) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      console.log("App has come to the foreground!");
+      doLookup();
+    }
+
+    appState.current = nextAppState;
+    setAppStateVisible(appState.current);
+    console.log("AppState", appState.current);
+  };
+
   const [sharedData, setSharedData] = useState(null);
+  console.log({ sharedData });
 
   const doLookup = useCallback(async () => {
     console.log("checking for data...");
@@ -36,13 +50,12 @@ const App = () => {
       style={{
         display: "flex",
         flex: 1,
+        paddingHorizontal: 12,
         justifyContent: "center",
-        alignItems: "center",
       }}
     >
-      {/* <Text>Shared mime type: {sharedMimeType}</Text> */}
-      <Button onPress={doLookup} title="Refresh" />
-      <Text>Shared file location: {JSON.stringify(sharedData)}</Text>
+      <Text style={{ fontSize: 20, fontWeight: "bold" }}>Current Data:</Text>
+      <Text style={{ fontSize: 18 }}>{JSON.stringify(sharedData)}</Text>
     </View>
   );
 };
