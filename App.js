@@ -3,6 +3,10 @@ import { AppState, Text, View } from "react-native";
 import ShareMenu from "react-native-share-menu";
 import { getData } from "./utils";
 
+// FYI two patches needed for iOS
+// https://github.com/meedan/react-native-share-menu/issues/135
+// https://github.com/meedan/react-native-share-menu/issues/209
+
 const App = () => {
   const appState = useRef(AppState.currentState);
 
