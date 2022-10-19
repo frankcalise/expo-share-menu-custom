@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
   <key>HostAppBundleIdentifier</key>
-  <string>com.frankcalise.ExpoShareMenuCustom</string>
+  <string>com.frankcalise.exposharemenucustom</string>
   <key>HostAppURLScheme</key>
-  <string>com.frankcalise.ExpoShareMenuCustom://</string>
+  <string>com.frankcalise.exposharemenucustom://</string>
   <key>NSExtension</key>
   <dict>
       <key>NSExtensionAttributes</key>

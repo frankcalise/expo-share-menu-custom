@@ -99,7 +99,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 // Linking API
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  return [super application:application openURL:url options:options] || [ShareMenuManager application:application openURL:url options:options];
+  return [ShareMenuManager application:application openURL:url options:options];
 }
 
 // Universal Links

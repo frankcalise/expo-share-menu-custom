@@ -25,8 +25,16 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.frankcalise.ExpoShareMenuCustom</string>
+          <string>com.frankcalise.exposharemenucustom</string>
         </array>
+      </dict>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+          <array>
+              <string>com.frankcalise.exposharemenucustom</string>
+          </array>
       </dict>
     </array>
     <key>CFBundleVersion</key>
