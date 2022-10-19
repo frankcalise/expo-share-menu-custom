@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { AppState, Text, View, Button } from "react-native";
+import { AppState, Text, View } from "react-native";
+import ShareMenu from "react-native-share-menu";
 import { getData } from "./utils";
 
 const App = () => {
   const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
   useEffect(() => {
     const subscription = AppState.addEventListener(
@@ -23,10 +23,13 @@ const App = () => {
     ) {
       console.log("App has come to the foreground!");
       doLookup();
+    } else {
+      // initial launch
+      console.log("initial launch", appState.currentState, nextAppState);
+      doLookup();
     }
 
     appState.current = nextAppState;
-    setAppStateVisible(appState.current);
     console.log("AppState", appState.current);
   };
 
@@ -60,4 +63,48 @@ const App = () => {
   );
 };
 
-export default App;
+const AndroidApp = () => {
+  const [sharedData, setSharedData] = useState(null);
+  const [sharedMimeType, setSharedMimeType] = useState(null);
+
+  const handleShare = useCallback((item) => {
+    if (!item) {
+      return;
+    }
+
+    console.log(item);
+
+    const { mimeType, data, extraData } = item;
+
+    setSharedData(data);
+    setSharedMimeType(mimeType);
+  }, []);
+
+  useEffect(() => {
+    ShareMenu.getInitialShare(handleShare);
+  }, []);
+
+  useEffect(() => {
+    const listener = ShareMenu.addNewShareListener(handleShare);
+
+    return () => {
+      listener.remove();
+    };
+  }, []);
+
+  return (
+    <View
+      style={{
+        display: "flex",
+        flex: 1,
+        paddingHorizontal: 12,
+        justifyContent: "center",
+      }}
+    >
+      <Text style={{ fontSize: 20, fontWeight: "bold" }}>Current Data:</Text>
+      <Text style={{ fontSize: 18 }}>{JSON.stringify(sharedData)}</Text>
+    </View>
+  );
+};
+
+export default Platform.select({ ios: App, android: AndroidApp });

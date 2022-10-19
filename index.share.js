@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { AppRegistry, Text, View, Image, Button } from "react-native";
 import { ShareMenuReactView } from "react-native-share-menu";
 import { storeData } from "./utils";
