@@ -15,6 +15,7 @@
 		65DEF288290034E60074ABDB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65DEF286290034E60074ABDB /* MainInterface.storyboard */; };
 		65DEF28C290034E60074ABDB /* ShareMenu.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 65DEF282290034E60074ABDB /* ShareMenu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65DEF295290035730074ABDB /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEF294290035730074ABDB /* ShareViewController.swift */; };
+		65DEF29829003E180074ABDB /* ReactShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DEF29729003E180074ABDB /* ReactShareViewController.swift */; };
 		747C8AC7B6D1479C9E7B0293 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECEA4119B8A4FB5A2791170 /* noop-file.swift */; };
 		96905EF65AED1B983A6B3ABC /* libPods-ExpoShareMenuCustom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ExpoShareMenuCustom.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
@@ -63,6 +64,7 @@
 		65DEF293290035720074ABDB /* ShareMenu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareMenu-Bridging-Header.h"; sourceTree = "<group>"; };
 		65DEF294290035730074ABDB /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareViewController.swift; path = "../../node_modules/react-native-share-menu/ios/ShareViewController.swift"; sourceTree = "<group>"; };
 		65DEF2962900370B0074ABDB /* ShareMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareMenu.entitlements; sourceTree = "<group>"; };
+		65DEF29729003E180074ABDB /* ReactShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactShareViewController.swift; path = "../../node_modules/react-native-share-menu/ios/ReactShareViewController.swift"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-ExpoShareMenuCustom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpoShareMenuCustom.debug.xcconfig"; path = "Target Support Files/Pods-ExpoShareMenuCustom/Pods-ExpoShareMenuCustom.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-ExpoShareMenuCustom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpoShareMenuCustom.release.xcconfig"; path = "Target Support Files/Pods-ExpoShareMenuCustom/Pods-ExpoShareMenuCustom.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ExpoShareMenuCustom/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		65DEF283290034E60074ABDB /* ShareMenu */ = {
 			isa = PBXGroup;
 			children = (
+				65DEF29729003E180074ABDB /* ReactShareViewController.swift */,
 				65DEF2962900370B0074ABDB /* ShareMenu.entitlements */,
 				65DEF294290035730074ABDB /* ShareViewController.swift */,
 				65DEF286290034E60074ABDB /* MainInterface.storyboard */,
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65DEF29829003E180074ABDB /* ReactShareViewController.swift in Sources */,
 				65DEF295290035730074ABDB /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
