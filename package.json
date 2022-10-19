@@ -5,13 +5,15 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "expo": "~46.0.16",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.6",
