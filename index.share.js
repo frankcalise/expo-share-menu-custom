@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { AppRegistry, Text, View, Image, Button } from "react-native";
-import ShareMenu, { ShareMenuReactView } from "react-native-share-menu";
+import { ShareMenuReactView } from "react-native-share-menu";
+import SharedGroupPreferences from "react-native-shared-group-preferences";
+
+const APP_GROUP_ID = "group.com.frankcalise.exposharemenucustom";
+
+async function storeData(key, data) {
+  try {
+    console.log("storing data...");
+    await SharedGroupPreferences.setItem(key, data, APP_GROUP_ID);
+  } catch (errorCode) {
+    // errorCode 0 = There is no suite with that name
+    console.log(errorCode);
+  }
+}
 
 const Share = () => {
   const [sharedData, setSharedData] = useState("");
@@ -17,7 +30,7 @@ const Share = () => {
   return (
     <View>
       <Button
-        title="Dismiss"
+        title="Cancel"
         onPress={() => {
           ShareMenuReactView.dismissExtension();
         }}
@@ -26,10 +39,11 @@ const Share = () => {
         title="Send"
         onPress={() => {
           // Share something before dismissing
+          storeData("share-key", sharedData);
           ShareMenuReactView.dismissExtension();
         }}
       />
-      <Button
+      {/* <Button
         title="Dismiss with Error"
         onPress={() => {
           ShareMenuReactView.dismissExtension("Something went wrong!");
@@ -46,7 +60,7 @@ const Share = () => {
         onPress={() => {
           ShareMenuReactView.continueInApp({ hello: "from the other side" });
         }}
-      />
+      /> */}
       {sharedMimeType === "text/plain" && <Text>{sharedData}</Text>}
       {sharedMimeType?.startsWith("image/") && (
         <Image source={{ uri: sharedData }} />

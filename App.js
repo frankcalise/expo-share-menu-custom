@@ -1,42 +1,34 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { AppRegistry, Text, View, Image, Button } from "react-native";
-import ShareMenu, { ShareMenuReactView } from "react-native-share-menu";
+import { Text, View, Button } from "react-native";
+import SharedGroupPreferences from "react-native-shared-group-preferences";
+
+const APP_GROUP_ID = "group.com.frankcalise.exposharemenucustom";
+
+async function getData(key) {
+  try {
+    const loadedData = await SharedGroupPreferences.getItem(key, APP_GROUP_ID);
+    console.log("shared prefs data", loadedData);
+    return loadedData;
+  } catch (errorCode) {
+    // errorCode 0 = no group name exists. You probably need to setup your Xcode Project properly.
+    // errorCode 1 = there is no value for that key
+    console.log(errorCode);
+  }
+}
 
 const App = () => {
   const [sharedData, setSharedData] = useState(null);
-  const [sharedMimeType, setSharedMimeType] = useState(null);
 
-  const handleShare = useCallback((item) => {
-    if (!item) {
-      return;
+  const doLookup = useCallback(async () => {
+    console.log("checking for data...");
+    const data = await getData("share-key");
+    if (data) {
+      console.log("retrieved data", data);
+      setSharedData(data);
+    } else {
+      console.log("no data");
     }
-
-    console.log(item);
-
-    const { mimeType, data, extraData } = item;
-
-    setSharedData(data);
-    setSharedMimeType(mimeType);
-    // You can receive extra data from your custom Share View
-    console.log(extraData);
   }, []);
-
-  useEffect(() => {
-    ShareMenu.getInitialShare(handleShare);
-  }, []);
-
-  useEffect(() => {
-    const listener = ShareMenu.addNewShareListener(handleShare);
-
-    return () => {
-      listener.remove();
-    };
-  }, []);
-
-  if (!sharedMimeType && !sharedData) {
-    // The user hasn't shared anything yet
-    return null;
-  }
 
   // The user shared a file in general
   return (
@@ -48,12 +40,11 @@ const App = () => {
         alignItems: "center",
       }}
     >
-      <Text>Shared mime type: {sharedMimeType}</Text>
+      {/* <Text>Shared mime type: {sharedMimeType}</Text> */}
+      <Button onPress={doLookup} title="Refresh" />
       <Text>Shared file location: {JSON.stringify(sharedData)}</Text>
     </View>
   );
 };
-
-
 
 export default App;

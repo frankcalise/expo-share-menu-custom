@@ -304,6 +304,8 @@ PODS:
     - React-jsi (= 0.69.6)
     - React-logger (= 0.69.6)
     - React-perflogger (= 0.69.6)
+  - RNReactNativeSharedGroupPreferences (1.1.23):
+    - React
   - RNShareMenu (6.0.0):
     - React
   - Yoga (1.14.0)
@@ -349,6 +351,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNReactNativeSharedGroupPreferences (from `../node_modules/react-native-shared-group-preferences`)
   - RNShareMenu (from `../node_modules/react-native-share-menu`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -435,6 +438,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNReactNativeSharedGroupPreferences:
+    :path: "../node_modules/react-native-shared-group-preferences"
   RNShareMenu:
     :path: "../node_modules/react-native-share-menu"
   Yoga:
@@ -481,9 +486,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: 285f8538386c660e6b9497e204636acd93bf7fcc
   React-runtimeexecutor: 0af71c94f968fa10015bf0119951bccd2e4d8865
   ReactCommon: fe7580b9d10f00249facf25659e0ec051320cc8a
+  RNReactNativeSharedGroupPreferences: de0121a4224c267bc7e9fb16c398f3f087c8da81
   RNShareMenu: cb9dac548c8bf147d06f0bf07296ad51ea9f5fc3
   Yoga: 75bf4b0131cfb46a659cd0c13309b79a6fcff66d
 
-PODFILE CHECKSUM: 3d13ca5dc1d8badd06131f548e7d0f558f30f518
+PODFILE CHECKSUM: f45c2ebb8803c6eb59c11d00c52af21cc8ec66a1
 
 COCOAPODS: 1.11.3
