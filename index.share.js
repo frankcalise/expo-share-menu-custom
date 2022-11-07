@@ -16,13 +16,16 @@ const Share = () => {
   }, []);
 
   return (
-    <View>
+    <View style={{ alignItems: "center" }}>
+      <Text>Custom Share UI</Text>
+      <Text>Cancel - dismisses this modal</Text>
       <Button
         title="Cancel"
         onPress={() => {
           ShareMenuReactView.dismissExtension();
         }}
       />
+      <Text>Send - sends payload data to shared group prefs (see App.js)</Text>
       <Button
         title="Send"
         onPress={() => {
@@ -31,24 +34,6 @@ const Share = () => {
           ShareMenuReactView.dismissExtension();
         }}
       />
-      {/* <Button
-        title="Dismiss with Error"
-        onPress={() => {
-          ShareMenuReactView.dismissExtension("Something went wrong!");
-        }}
-      />
-      <Button
-        title="Continue In App"
-        onPress={() => {
-          ShareMenuReactView.continueInApp();
-        }}
-      />
-      <Button
-        title="Continue In App With Extra Data"
-        onPress={() => {
-          ShareMenuReactView.continueInApp({ hello: "from the other side" });
-        }}
-      /> */}
       {sharedMimeType === "text/plain" && <Text>{sharedData}</Text>}
       {sharedMimeType?.startsWith("image/") && (
         <Image source={{ uri: sharedData }} />
